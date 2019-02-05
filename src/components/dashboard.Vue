@@ -1,7 +1,10 @@
-<template>
-  <div class="hello">
-     <div>
+import { mapState, mapActions } from 'vuex'
+
+export default {
+    template: `
+        <div>
             <h1>Hi {{account.user.firstName}}!</h1>
+            <p>You're logged in with Vue + Vuex & JWT!!</p>
             <h3>Users from secure api end point:</h3>
             <em v-if="users.loading">Loading users...</em>
             <span v-if="users.error" class="text-danger">ERROR: {{users.error}}</span>
@@ -17,38 +20,20 @@
                 <router-link to="/login">Logout</router-link>
             </p>
         </div>
-  </div>
-</template>
-
-<script>
-export default {
-  name: "Dashboard",
-  props: {
-    msg: String
-  }
+    `,
+    computed: {
+        ...mapState({
+            account: state => state.account,
+            users: state => state.users.all
+        })
+    },
+    created () {
+        this.getAllUsers();
+    },
+    methods: {
+        ...mapActions('users', {
+            getAllUsers: 'getAll',
+            deleteUser: 'delete'
+        })
+    }
 };
-</script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-a {
-  color: #42b983;
-}
-input {
-  width: 350px;
-}
-.dashboard-title {
-  margin-bottom: 80px;
-  margin-top: 140px;
-}
-.row {
-  margin-bottom: 15px;
-}
-
-.dashboard-btn {
-  width: 353px;
-}
-</style>
