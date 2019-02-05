@@ -1,9 +1,9 @@
 import Vue from 'vue';
-import App from './App.vue'
+import App from './App.js'
 import iView from 'iview';
 import VeeValidate from 'vee-validate';
 import { store } from './_store';
-import { router } from './_helpers';
+import {router} from './_helper';
 import 'iview/dist/styles/iview.css';
 import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -18,7 +18,7 @@ Vue.use(iView);
 Vue.use(VeeValidate);
 
 // setup fake backend
-import { configureFakeBackend } from './_helpers';
+import { configureFakeBackend } from './_helper';
 configureFakeBackend();
 
 new Vue({

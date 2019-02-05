@@ -1,8 +1,8 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-import HomePage from '../components/Dashboard'
-import LoginPage from '../components/LoginPage'
+import Dashboard from '../components/dashboard.Vue'
+import LoginPage from '../components/Login'
 import RegisterPage from '../components/registration'
 
 Vue.use(Router);
@@ -10,7 +10,7 @@ Vue.use(Router);
 export const router = new Router({
   mode: 'history',
   routes: [
-    { path: '/', component: HomePage },
+    { path: '/', component: Dashboard },
     { path: '/login', component: LoginPage },
     { path: '/register', component: RegisterPage },
 
